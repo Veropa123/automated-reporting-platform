@@ -1,6 +1,12 @@
 # Automated Reporting Platform
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Open_App-4C6EF5?style=for-the-badge)](https://automated-reporting-platform.onrender.com/)
+[![API Docs](https://img.shields.io/badge/API_Docs-Swagger-009688?style=for-the-badge)](https://automated-reporting-platform.onrender.com/docs)
+[![GitHub](https://img.shields.io/badge/Source_Code-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/Veropa123/automated-reporting-platform)
+
 A portfolio-ready application for importing business data, validating datasets, calculating key performance indicators (KPIs), visualizing analytical summaries, and exporting structured Excel reports.
+
+> **Live application:** https://automated-reporting-platform.onrender.com/
 
 ## Project Goal
 
@@ -26,6 +32,7 @@ The application is intentionally built around a real business workflow: upload a
 - Docker support
 - Docker Compose configuration
 - GitHub Actions CI workflow
+- Public deployment on Render
 
 ## Planned Features
 
@@ -36,7 +43,6 @@ The application is intentionally built around a real business workflow: upload a
 - PDF report export
 - Expanded visualizations
 - Broader test coverage
-- Cloud deployment
 
 ## Tech Stack
 
@@ -49,6 +55,7 @@ The application is intentionally built around a real business workflow: upload a
 - Pytest
 - Docker
 - GitHub Actions
+- Render
 
 ## Architecture
 
@@ -96,8 +103,25 @@ automated-reporting-platform/
 ├── docker-compose.yml
 ├── LICENSE
 ├── README.md
+├── render.yaml
 └── requirements.txt
 ```
+
+## Live Demo
+
+Open the deployed application:
+
+https://automated-reporting-platform.onrender.com/
+
+Interactive API documentation:
+
+https://automated-reporting-platform.onrender.com/docs
+
+Health check:
+
+https://automated-reporting-platform.onrender.com/health
+
+> The free Render instance may take a short time to wake up after periods of inactivity.
 
 ## Run Locally
 
@@ -188,7 +212,7 @@ A sample dataset is included in `sample_data/sales.csv` so the project can be de
 
 ## Portfolio Purpose
 
-This project is developed as a complete technical case study rather than a code exercise. It demonstrates backend development, data analysis, frontend integration, API design, automated testing, containerization, CI, and documentation in one practical workflow.
+This project is developed as a complete technical case study rather than a code exercise. It demonstrates backend development, data analysis, frontend integration, API design, automated testing, containerization, CI, deployment, and documentation in one practical workflow.
 
 ## License
 
