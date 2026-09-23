@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Automated Reporting Platform</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div>
+        <span class="eyebrow">DATA AUTOMATION PORTFOLIO PROJECT</span>
+        <h1>Automated Reporting Platform</h1>
+        <p>
+          Upload a CSV or Excel file to validate data, calculate KPIs,
+          inspect missing values, and generate a downloadable Excel report.
+        </p>
+      </div>
+      <a class="secondary-button" href="/docs" target="_blank" rel="noreferrer">API Docs</a>
+    </header>
+
+    <main>
+      <section class="upload-panel">
+        <div class="drop-zone" id="drop-zone">
+          <div class="upload-icon">↑</div>
+          <h2>Analyze your business data</h2>
+          <p>Drop a CSV/XLSX file here, or choose one from your computer.</p>
+          <input id="file-input" type="file" accept=".csv,.xlsx" hidden />
+          <div class="button-row">
+            <button class="primary-button" id="choose-file">Choose file</button>
+            <button class="ghost-button" id="use-sample">Use sample data</button>
+          </div>
+          <span class="file-name" id="file-name">No file selected</span>
+        </div>
+        <div class="analysis-state" id="analysis-state">Ready to analyze a dataset.</div>
+      </section>
+
+      <section class="results hidden" id="results">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">ANALYSIS RESULTS</span>
+            <h2>Dataset overview</h2>
+          </div>
+          <div class="button-row">
+            <button class="ghost-button" id="download-json">Download JSON</button>
+            <button class="primary-button" id="download-excel">Download Excel report</button>
+          </div>
+        </div>
+
+        <div class="kpi-grid" id="kpi-grid"></div>
+
+        <div class="content-grid">
+          <article class="card">
+            <div class="card-heading">
+              <h3>Numeric averages</h3>
+              <span>Automatic summary</span>
+            </div>
+            <div id="numeric-chart" class="bar-chart"></div>
+          </article>
+
+          <article class="card">
+            <div class="card-heading">
+              <h3>Data quality</h3>
+              <span>Missing values</span>
+            </div>
+            <div id="missing-values"></div>
+          </article>
+        </div>
+
+        <article class="card columns-card">
+          <div class="card-heading">
+            <h3>Detected columns</h3>
+            <span id="column-count"></span>
+          </div>
+          <div class="chip-list" id="column-list"></div>
+        </article>
+      </section>
+    </main>
+
+    <footer>Built with Python, FastAPI, Pandas and vanilla JavaScript.</footer>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
