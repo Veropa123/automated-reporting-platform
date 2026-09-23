@@ -18,7 +18,7 @@ def _extension(filename: str) -> str:
     return ""
 
 
-async def analyze_uploaded_file(file: UploadFile) -> dict:
+async def read_uploaded_dataframe(file: UploadFile) -> pd.DataFrame:
     extension = _extension(file.filename or "")
     if extension not in SUPPORTED_EXTENSIONS:
         raise ValueError("Unsupported file type. Upload a CSV or XLSX file.")
@@ -37,6 +37,14 @@ async def analyze_uploaded_file(file: UploadFile) -> dict:
     except Exception as exc:
         raise ValueError("The dataset could not be read.") from exc
 
+    if dataframe.empty:
+        raise ValueError("The dataset contains no rows.")
+
+    return dataframe
+
+
+async def analyze_uploaded_file(file: UploadFile) -> dict:
+    dataframe = await read_uploaded_dataframe(file)
     return analyze_dataframe(dataframe)
 
 
@@ -80,7 +88,9 @@ def calculate_basic_kpis(dataframe: pd.DataFrame) -> dict:
         "complete_rows": int(dataframe.dropna().shape[0]),
     }
 
-    normalized_columns = {str(column).strip().lower(): column for column in dataframe.columns}
+    normalized_columns = {
+        str(column).strip().lower(): column for column in dataframe.columns
+    }
 
     for candidate in ("sales", "revenue", "amount", "total"):
         if candidate in normalized_columns:
